@@ -1,0 +1,76 @@
+name: manage-azure-policy-93d36038
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        description: 'Reason for triggering the workflow run'
+        required: false
+        default: 'Updating Azure Policies'
+
+
+## Uncomment the following if you wish to automatically trigger workflow run with every commit
+#
+#  push:
+#    paths:
+#      - 'policies/Deploy_Diagnostic_Settings_for_Logic_Apps_to_Event_Hub_a1dae6c7-13f3-48ea-a149-ff8442661f60/**'
+#      - 'policies/Resource_logs_in_Event_Hub_should_be_enabled_83a214f7-d01a-484b-91a9-ed54470c9a6a/**'
+#      - 'policies/Logic_Apps_Integration_Service_Environment_should_be_encrypted_with_customer-managed_keys_1fafeaf6-7927-4059-a50a-8eb2a7a6f2b5/**'
+#      - 'policies/Resource_logs_in_Logic_Apps_should_be_enabled_34f95f76-5386-4de7-b824-0d8478470c9d/**'
+#      - 'policies/Deploy_Diagnostic_Settings_for_Logic_Apps_to_Log_Analytics_workspace_b889a06c-ec72-4b03-910a-cb169ee18721/**'
+#      - 'policies/Logic_Apps_should_be_deployed_into_Integration_Service_Environment_dc595cb1-1cde-45f6-8faf-f88874e1c0e1/**'
+#      - 'policies/Configure_Azure_File_Sync_to_use_private_DNS_zones_06695360-db88-47f6-b976-7500d4297475/**'
+#      - 'policies/Configure_a_private_DNS_Zone_ID_for_table_groupID_028bbd88-e9b5-461f-9424-a1b63a7bee1a/**'
+#      - 'policies/Configure_Azure_Web_PubSub_Service_to_use_private_DNS_zones_0b026355-49cb-467b-8ac4-f777874e175a/**'
+#      - 'policies/Configure_Azure_Synapse_workspaces_to_use_private_DNS_zones_1e5ed725-f16c-478b-bd4b-7bfa2f7940b9/**'
+#      - 'policies/Configure_Azure_Defender_for_DNS_to_be_enabled_2370a3c1-4a25-4283-a91a-c9c1a145fb2f/**'
+#      - 'policies/Configure_Azure_Monitor_Private_Link_Scope_to_use_private_DNS_zones_437914ee-c176-4fff-8986-7e05eb971365/**'
+#      - 'policies/Configure_Azure_HDInsight_clusters_to_use_private_DNS_zones_43d6e3bd-fc6a-4b44-8b4d-2151d8736a11/**'
+#      - 'policies/Deploy_-_Configure_private_DNS_zones_for_private_endpoints_that_connect_to_Batch_accounts_4ec38ebc-381f-45ee-81a4-acbc4be878f8/**'
+#      - 'policies/Configure_Azure_Arc_Private_Link_Scopes_to_use_private_DNS_zones_55c4db33-97b0-437b-8469-c4f4498f5df9/**'
+#      - 'policies/Configure_BotService_resources_to_use_private_DNS_zones_6a4e6f44-f2af-4082-9702-033c9e88b9f8/**'
+#      - 'policies/Configure_Azure_Automation_accounts_with_private_DNS_zones_6dd01e4f-1be1-4e80-9d0b-d109e04cb064/**'
+#      - 'policies/Configure_a_private_DNS_Zone_ID_for_file_groupID_6df98d03-368a-4438-8730-a93c4d7693d6/**'
+#      - 'policies/Configure_Azure_Migrate_resources_to_use_private_DNS_zones_7590a335-57cf-4c95-babd-ecbc8fafeb1f/**'
+#      - 'policies/Configure_a_private_DNS_Zone_ID_for_blob_groupID_75973700-529f-4de2-b794-fb9b6781b6b0/**'
+#      - 'policies/Configure_private_DNS_zones_for_private_endpoints_connected_to_App_Configuration_7a860e27-9ca2-4fc6-822d-c2d248c300df/**'
+#      - 'policies/Configure_a_private_DNS_Zone_ID_for_dfs_groupID_83c6fe0f-2316-444a-99a1-1ecd8a7872ca/**'
+#      - 'policies/Configure_private_DNS_zones_for_private_endpoints_that_connect_to_Azure_Data_Factory_86cd96e1-1745-420d-94d4-d3f2fe415aa4/**'
+#      - .github/workflows/manage-azure-policy-93d36038.yml
+jobs:
+  apply-azure-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS_93d36038}}
+        allow-no-subscriptions: true
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          policies/Deploy_Diagnostic_Settings_for_Logic_Apps_to_Event_Hub_a1dae6c7-13f3-48ea-a149-ff8442661f60/**
+          policies/Resource_logs_in_Event_Hub_should_be_enabled_83a214f7-d01a-484b-91a9-ed54470c9a6a/**
+          policies/Logic_Apps_Integration_Service_Environment_should_be_encrypted_with_customer-managed_keys_1fafeaf6-7927-4059-a50a-8eb2a7a6f2b5/**
+          policies/Resource_logs_in_Logic_Apps_should_be_enabled_34f95f76-5386-4de7-b824-0d8478470c9d/**
+          policies/Deploy_Diagnostic_Settings_for_Logic_Apps_to_Log_Analytics_workspace_b889a06c-ec72-4b03-910a-cb169ee18721/**
+          policies/Logic_Apps_should_be_deployed_into_Integration_Service_Environment_dc595cb1-1cde-45f6-8faf-f88874e1c0e1/**
+          policies/Configure_Azure_File_Sync_to_use_private_DNS_zones_06695360-db88-47f6-b976-7500d4297475/**
+          policies/Configure_a_private_DNS_Zone_ID_for_table_groupID_028bbd88-e9b5-461f-9424-a1b63a7bee1a/**
+          policies/Configure_Azure_Web_PubSub_Service_to_use_private_DNS_zones_0b026355-49cb-467b-8ac4-f777874e175a/**
+          policies/Configure_Azure_Synapse_workspaces_to_use_private_DNS_zones_1e5ed725-f16c-478b-bd4b-7bfa2f7940b9/**
+          policies/Configure_Azure_Defender_for_DNS_to_be_enabled_2370a3c1-4a25-4283-a91a-c9c1a145fb2f/**
+          policies/Configure_Azure_Monitor_Private_Link_Scope_to_use_private_DNS_zones_437914ee-c176-4fff-8986-7e05eb971365/**
+          policies/Configure_Azure_HDInsight_clusters_to_use_private_DNS_zones_43d6e3bd-fc6a-4b44-8b4d-2151d8736a11/**
+          policies/Deploy_-_Configure_private_DNS_zones_for_private_endpoints_that_connect_to_Batch_accounts_4ec38ebc-381f-45ee-81a4-acbc4be878f8/**
+          policies/Configure_Azure_Arc_Private_Link_Scopes_to_use_private_DNS_zones_55c4db33-97b0-437b-8469-c4f4498f5df9/**
+          policies/Configure_BotService_resources_to_use_private_DNS_zones_6a4e6f44-f2af-4082-9702-033c9e88b9f8/**
+          policies/Configure_Azure_Automation_accounts_with_private_DNS_zones_6dd01e4f-1be1-4e80-9d0b-d109e04cb064/**
+          policies/Configure_a_private_DNS_Zone_ID_for_file_groupID_6df98d03-368a-4438-8730-a93c4d7693d6/**
+          policies/Configure_Azure_Migrate_resources_to_use_private_DNS_zones_7590a335-57cf-4c95-babd-ecbc8fafeb1f/**
+          policies/Configure_a_private_DNS_Zone_ID_for_blob_groupID_75973700-529f-4de2-b794-fb9b6781b6b0/**
+          policies/Configure_private_DNS_zones_for_private_endpoints_connected_to_App_Configuration_7a860e27-9ca2-4fc6-822d-c2d248c300df/**
+          policies/Configure_a_private_DNS_Zone_ID_for_dfs_groupID_83c6fe0f-2316-444a-99a1-1ecd8a7872ca/**
+          policies/Configure_private_DNS_zones_for_private_endpoints_that_connect_to_Azure_Data_Factory_86cd96e1-1745-420d-94d4-d3f2fe415aa4/**
